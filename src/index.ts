@@ -15,7 +15,7 @@ process.on("unhandledRejection", (reason: any) => {
 });
 
 // Define async start function
-const start = async ({ config, db }) => {
+const start = async ({ config, db }: any) => {
   try {
     const server = await Server.init(config, db);
     await server.start();

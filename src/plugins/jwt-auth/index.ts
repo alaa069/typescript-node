@@ -36,7 +36,7 @@ const register = async (
   }
 };
 
-const setAuthStrategy = async (server, { config, validate }) => {
+const setAuthStrategy = async (server: any, { config, validate }: any) => {
   server.auth.strategy("jwt", "jwt", {
     key: config.jwtSecret,
     validate,

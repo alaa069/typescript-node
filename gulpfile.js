@@ -60,14 +60,15 @@ gulp.task('configs', (cb) => {
 /**
  * Build the project.
  */
-gulp.task('build', ['tslint', 'compile', 'configs'], () => {
+gulp.task('build', gulp.series('tslint', 'compile', 'configs', (cb) => {
   console.log('Building the project ...');
-});
+  cb();
+}));
 
 /**
  * Run tests.
  */
-gulp.task('test', ['build'], (cb) => {
+gulp.task('test', gulp.series('build', (cb) => {
   const envs = env.set({
     NODE_ENV: 'test'
   });
@@ -78,7 +79,8 @@ gulp.task('test', ['build'], (cb) => {
     .once('error', (error) => {
       console.log(error);
       process.exit(1);
+      cb();
     });
-});
+}));
 
-gulp.task('default', ['build']);
+gulp.task('default', gulp.series('build'));

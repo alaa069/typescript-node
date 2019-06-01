@@ -1,7 +1,7 @@
 import * as Database from "../src/database";
 
 export function createTaskDummy(userId?: string, name?: string, description?: string) {
-  var user = {
+  var user: any = {
     name: name || "dummy task",
     description: description || "I'm a dummy task!"
   };
@@ -71,7 +71,7 @@ export function createSeedUserData(database: Database.IDatabase, done: MochaDone
     });
 }
 
-export async function login(server, config, user) {
+export async function login(server: any, config: any, user: any) {
   if (!user) {
     user = createUserDummy();
   }

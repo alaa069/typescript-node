@@ -7,7 +7,7 @@ export interface IUser extends Mongoose.Document {
   password: string;
   createdAt: Date;
   updateAt: Date;
-  validatePassword(requestPassword): boolean;
+  validatePassword(requestPassword: any): boolean;
 }
 
 export const UserSchema = new Mongoose.Schema(
@@ -29,12 +29,12 @@ function hashPassword(password: string): string {
   return Bcrypt.hashSync(password, Bcrypt.genSaltSync(8));
 }
 
-UserSchema.methods.validatePassword = function(requestPassword) {
+UserSchema.methods.validatePassword = function(requestPassword: any) {
   return Bcrypt.compareSync(requestPassword, this.password);
 };
 
 UserSchema.pre("save", function(next) {
-  const user = this;
+  const user: any = this;
 
   if (!user.isModified("password")) {
     return next();

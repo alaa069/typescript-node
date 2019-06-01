@@ -12,7 +12,7 @@ const assert = chai.assert;
 const serverConfig = Configs.getServerConfigs();
 
 describe("UserController Tests", () => {
-  let server;
+  let server: any;
 
   before(done => {
     Server.init(serverConfig, database).then(s => {

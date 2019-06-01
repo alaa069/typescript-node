@@ -58,7 +58,7 @@ export const checkEmailFormat = (email: string) => {
 
 //Sort array with key element
 export const sortArray = (key: string) => {
-    return function (a, b) {
+    return function (a: any, b: any) {
         if (a[key] > b[key]) {
             return 1;
         } else if (a[key] < b[key]) {
